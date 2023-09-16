@@ -23,7 +23,6 @@ public class Artist {
     private String name;
     @Column
     private String altName;
-
     @OneToMany(mappedBy = "artist", orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Album> albums = new ArrayList<>();
 
