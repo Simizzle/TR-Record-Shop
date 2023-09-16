@@ -4,10 +4,12 @@ import com.techreturners.recordshop.model.Album;
 import com.techreturners.recordshop.model.Genre;
 import com.techreturners.recordshop.repository.RecordShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class RecordShopServiceImpl implements RecordShopService {
 
     @Autowired
