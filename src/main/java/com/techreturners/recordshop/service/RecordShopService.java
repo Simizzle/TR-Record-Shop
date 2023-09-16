@@ -1,4 +1,27 @@
 package com.techreturners.recordshop.service;
 
-public class RecordShopService {
+import com.techreturners.recordshop.model.Album;
+import com.techreturners.recordshop.model.Genre;
+
+import java.util.List;
+
+public interface RecordShopService {
+
+    List<Album> getAllAlbums();
+
+    Album insertAlbum(Album album);
+
+    Album getAlbumByTitle(String title);
+
+    List<Album> getAlbumsByYear(int year);
+
+    List<Album> getAlbumsByArtist(String artist);
+
+    List<Album> getAlbumsByGenre(Genre genre);
+
+    void updateAlbumByTitle(String title, Album album);
+
+    void updateStockForAlbum(Album album);
+
+    void deleteAlbumById(Long id);
 }
