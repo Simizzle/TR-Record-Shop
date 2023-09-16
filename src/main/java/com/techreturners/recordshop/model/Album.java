@@ -1,9 +1,9 @@
 package com.techreturners.recordshop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 public class Album {
 
     @Id
@@ -27,8 +29,8 @@ public class Album {
     private String label;
     @Column
     private List<Format> format;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "artist_name")
+    @ManyToOne
+    @JoinColumn(name = "artist_name", nullable = false)
     private Artist artist;
 
 }
