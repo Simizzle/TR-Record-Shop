@@ -1,29 +1,36 @@
 package com.techreturners.recordshop.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Getter
 @Setter
 public class Artist {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(updatable = false, nullable = false)
     private Long id;
     @Column
-    private String name;
+    private String artistName;
     @Column
     private String altName;
-    @OneToMany(mappedBy = "artist", orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Album> albums = new ArrayList<>();
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public String getAltName() {
+        return altName;
+    }
 }
