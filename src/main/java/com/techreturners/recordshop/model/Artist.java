@@ -12,6 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Builder
 @Setter
+@Getter
 public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -21,16 +22,4 @@ public class Artist {
     private String artistName;
     @Column
     private String altName;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getArtistName() {
-        return artistName;
-    }
-
-    public String getAltName() {
-        return altName;
-    }
 }

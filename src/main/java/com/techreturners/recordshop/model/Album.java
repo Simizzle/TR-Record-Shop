@@ -13,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 @Setter
+@Getter
 public class Album {
 
     @Id
@@ -34,30 +35,4 @@ public class Album {
     @JoinColumn(name = "artist_id")
     private Artist artist;
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public Genre getGenre() {
-        return genre;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public String getLabel() {
-        return label;
-    }
-
-    public List<Format> getFormat() {
-        return format;
-    }
-    public Artist getArtist() {
-        return artist;
-    }
 }
