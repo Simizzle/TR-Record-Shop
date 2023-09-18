@@ -21,6 +21,8 @@ public class Album {
     @Column(updatable = false, nullable = false)
     private Long id;
     @Column
+    private String artist;
+    @Column
     private String title;
     @Column
     private Genre genre;
@@ -31,8 +33,8 @@ public class Album {
     @Column
     private List<Format> format;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "artist_id")
-    private Artist artist;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "artist_id")
+//    private Artist artist;
 
 }

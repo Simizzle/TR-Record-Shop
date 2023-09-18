@@ -1,6 +1,7 @@
 package com.techreturners.recordshop.controller;
 
 import com.techreturners.recordshop.model.Album;
+import com.techreturners.recordshop.model.Artist;
 import com.techreturners.recordshop.service.RecordShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -29,7 +30,13 @@ public class RecordShopController {
         Album newAlbum = recordShopService.insertAlbum(album);
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add("album", "/api/v1/albums/" + newAlbum.getId().toString());
-        return new ResponseEntity<>(newAlbum, HttpStatus.CREATED);
+        return new ResponseEntity<>(newAlbum, httpHeaders, HttpStatus.CREATED);
+    }
+
+    @GetMapping(value = {"/albums/{artist}"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Album>> getAlbumByArtist(@RequestParam String artist) {
+        List<Album> albumList = recordShopService.getAlbumsByArtist(artist);
+        return new ResponseEntity<>(albumList, HttpStatus.OK);
     }
 
 }

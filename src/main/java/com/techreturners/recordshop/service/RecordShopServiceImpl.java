@@ -17,9 +17,7 @@ public class RecordShopServiceImpl implements RecordShopService {
 
     @Override
     public List<Album> getAllAlbums() {
-        List<Album> albums = new ArrayList<>();
-        recordShopRepository.findAll().forEach(albums::add);
-        return albums;
+        return new ArrayList<>(recordShopRepository.findAll());
     }
 
     @Override
@@ -28,7 +26,7 @@ public class RecordShopServiceImpl implements RecordShopService {
     }
 
     @Override
-    public Album getAlbumByTitle(String title) {
+    public List<Album> getAlbumByTitle(String title) {
         return null;
     }
 
@@ -38,8 +36,8 @@ public class RecordShopServiceImpl implements RecordShopService {
     }
 
     @Override
-    public List<Album> getAlbumsByArtist(String artist) {
-        return null;
+    public List<Album> getAlbumsByArtist(String artistName) {
+        return recordShopRepository.findAllAlbumsByArtist(artistName);
     }
 
     @Override

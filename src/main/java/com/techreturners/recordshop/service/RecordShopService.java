@@ -11,11 +11,11 @@ public interface RecordShopService {
 
     Album insertAlbum(Album album);
 
-    Album getAlbumByTitle(String title);
+    List<Album> getAlbumByTitle(String title);
 
     List<Album> getAlbumsByYear(int year);
 
-    List<Album> getAlbumsByArtist(String artist);
+    List<Album> getAlbumsByArtist(String artistName);
 
     List<Album> getAlbumsByGenre(Genre genre);
 

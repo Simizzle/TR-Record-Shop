@@ -1,7 +1,13 @@
 package com.techreturners.recordshop.repository;
 
 import com.techreturners.recordshop.model.Album;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface RecordShopRepository extends CrudRepository<Album, Long> {
+import java.util.List;
+
+@Repository
+public interface RecordShopRepository extends JpaRepository<Album, Long> {
+
+    List<Album> findAllAlbumsByArtist(String artist);
 }

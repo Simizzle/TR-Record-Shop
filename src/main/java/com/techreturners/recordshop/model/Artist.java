@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-@Entity
+//@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,4 +24,7 @@ public class Artist {
     private String artistName;
     @Column
     private String altName;
+
+//    @OneToMany(mappedBy = "artist", cascade = CascadeType.ALL)
+    private Set<Album> albums;
 }
