@@ -18,4 +18,6 @@ public interface RecordShopRepository extends JpaRepository<Album, Long> {
 
     List<Album> findAllAlbumsByGenre(Genre genre);
 
+    Album findAlbumById(Long albumId);
+
 }

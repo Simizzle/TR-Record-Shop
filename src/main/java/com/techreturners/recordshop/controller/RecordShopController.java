@@ -57,4 +57,17 @@ public class RecordShopController {
         return new ResponseEntity<>(albumList, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/albums/{albumId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Album> getAlbumById(@PathVariable Long albumId) {
+        Album albumList = recordShopService.getAlbumById(albumId);
+        return new ResponseEntity<>(albumList, HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/albums/{albumId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Album> updateAlbumById(@PathVariable("albumId") Long albumId, @RequestBody Album album) {
+        recordShopService.updateAlbumById(albumId, album);
+        return new ResponseEntity<>(recordShopService.getAlbumById(albumId), HttpStatus.OK);
+    }
+
+
 }

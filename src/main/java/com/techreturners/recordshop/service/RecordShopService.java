@@ -19,9 +19,12 @@ public interface RecordShopService {
 
     List<Album> getAlbumsByGenre(Genre genre);
 
-    void updateAlbumByTitle(String title, Album album);
+    void updateAlbumById(Long id, Album album);
 
     void updateStockForAlbum(Album album);
 
     void deleteAlbumById(Long id);
+
+    Album getAlbumById(Long albumId);
+
 }

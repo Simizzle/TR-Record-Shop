@@ -46,8 +46,16 @@ public class RecordShopServiceImpl implements RecordShopService {
     }
 
     @Override
-    public void updateAlbumByTitle(String title, Album album) {
+    public void updateAlbumById(Long id, Album album) {
+        Album retrievedAlbum = recordShopRepository.findAlbumById(id);
+        retrievedAlbum.setArtist(album.getArtist());
+        retrievedAlbum.setGenre(album.getGenre());
+        retrievedAlbum.setFormat(album.getFormat());
+        retrievedAlbum.setTitle(album.getTitle());
+        retrievedAlbum.setYear(album.getYear());
+        retrievedAlbum.setLabel(album.getLabel());
 
+        recordShopRepository.save(retrievedAlbum);
     }
 
     @Override
@@ -59,4 +67,10 @@ public class RecordShopServiceImpl implements RecordShopService {
     public void deleteAlbumById(Long id) {
 
     }
+
+    @Override
+    public Album getAlbumById(Long albumId) {
+        return recordShopRepository.findAlbumById(albumId);
+    }
+
 }
