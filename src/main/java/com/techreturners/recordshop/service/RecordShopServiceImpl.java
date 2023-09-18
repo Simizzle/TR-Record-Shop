@@ -26,8 +26,8 @@ public class RecordShopServiceImpl implements RecordShopService {
     }
 
     @Override
-    public List<Album> getAlbumByTitle(String title) {
-        return null;
+    public List<Album> getAlbumsByTitle(String title) {
+        return recordShopRepository.findAllAlbumsByTitle(title);
     }
 
     @Override

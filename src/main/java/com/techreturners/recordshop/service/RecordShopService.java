@@ -11,7 +11,7 @@ public interface RecordShopService {
 
     Album insertAlbum(Album album);
 
-    List<Album> getAlbumByTitle(String title);
+    List<Album> getAlbumsByTitle(String title);
 
     List<Album> getAlbumsByYear(int year);
 

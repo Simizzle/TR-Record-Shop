@@ -13,4 +13,6 @@ public interface RecordShopRepository extends JpaRepository<Album, Long> {
 
     List<Album> findAllAlbumsByYear(int year);
 
+    List<Album> findAllAlbumsByTitle(String title);
+
 }

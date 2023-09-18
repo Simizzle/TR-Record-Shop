@@ -1,7 +1,6 @@
 package com.techreturners.recordshop.controller;
 
 import com.techreturners.recordshop.model.Album;
-import com.techreturners.recordshop.model.Artist;
 import com.techreturners.recordshop.service.RecordShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -33,16 +32,23 @@ public class RecordShopController {
         return new ResponseEntity<>(newAlbum, httpHeaders, HttpStatus.CREATED);
     }
 
-    @GetMapping(value = {"/albums/byartist{artist}"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/albums", params = "artist", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Album>> getAlbumByArtist(@RequestParam String artist) {
         List<Album> albumList = recordShopService.getAlbumsByArtist(artist);
         return new ResponseEntity<>(albumList, HttpStatus.OK);
     }
 
-    @GetMapping(value = {"/albums/byyear{year}"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/albums", params = "year", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Album>> getAlbumByYear(@RequestParam int year) {
         List<Album> albumList = recordShopService.getAlbumsByYear(year);
         return new ResponseEntity<>(albumList, HttpStatus.OK);
     }
+
+    @RequestMapping(value = "/albums", params = "title", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Album>> getAlbumByYear(@RequestParam String title) {
+        List<Album> albumList = recordShopService.getAlbumsByTitle(title);
+        return new ResponseEntity<>(albumList, HttpStatus.OK);
+    }
+
 
 }

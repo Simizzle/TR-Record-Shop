@@ -37,4 +37,17 @@ public class Album {
 //    @JoinColumn(name = "artist_id")
 //    private Artist artist;
 
+
+    @Override
+    public String toString() {
+        return "Album{" +
+                "id=" + id +
+                ", artist='" + artist + '\'' +
+                ", title='" + title + '\'' +
+                ", genre=" + genre +
+                ", year=" + year +
+                ", label='" + label + '\'' +
+                ", format=" + format +
+                '}';
+    }
 }
