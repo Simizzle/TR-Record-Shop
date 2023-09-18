@@ -10,4 +10,7 @@ import java.util.List;
 public interface RecordShopRepository extends JpaRepository<Album, Long> {
 
     List<Album> findAllAlbumsByArtist(String artist);
+
+    List<Album> findAllAlbumsByYear(int year);
+
 }

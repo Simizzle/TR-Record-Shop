@@ -32,12 +32,12 @@ public class RecordShopServiceImpl implements RecordShopService {
 
     @Override
     public List<Album> getAlbumsByYear(int year) {
-        return null;
+        return recordShopRepository.findAllAlbumsByYear(year);
     }
 
     @Override
-    public List<Album> getAlbumsByArtist(String artistName) {
-        return recordShopRepository.findAllAlbumsByArtist(artistName);
+    public List<Album> getAlbumsByArtist(String artist) {
+        return recordShopRepository.findAllAlbumsByArtist(artist);
     }
 
     @Override

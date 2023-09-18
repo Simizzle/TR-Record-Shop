@@ -33,9 +33,15 @@ public class RecordShopController {
         return new ResponseEntity<>(newAlbum, httpHeaders, HttpStatus.CREATED);
     }
 
-    @GetMapping(value = {"/albums/{artist}"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = {"/albums/byartist{artist}"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Album>> getAlbumByArtist(@RequestParam String artist) {
         List<Album> albumList = recordShopService.getAlbumsByArtist(artist);
+        return new ResponseEntity<>(albumList, HttpStatus.OK);
+    }
+
+    @GetMapping(value = {"/albums/byyear{year}"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Album>> getAlbumByYear(@RequestParam int year) {
+        List<Album> albumList = recordShopService.getAlbumsByYear(year);
         return new ResponseEntity<>(albumList, HttpStatus.OK);
     }
 
