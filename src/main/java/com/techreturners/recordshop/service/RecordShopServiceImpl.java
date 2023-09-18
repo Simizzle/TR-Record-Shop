@@ -42,7 +42,7 @@ public class RecordShopServiceImpl implements RecordShopService {
 
     @Override
     public List<Album> getAlbumsByGenre(Genre genre) {
-        return null;
+        return recordShopRepository.findAllAlbumsByGenre(genre);
     }
 
     @Override

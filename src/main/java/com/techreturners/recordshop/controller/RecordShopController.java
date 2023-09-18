@@ -1,6 +1,7 @@
 package com.techreturners.recordshop.controller;
 
 import com.techreturners.recordshop.model.Album;
+import com.techreturners.recordshop.model.Genre;
 import com.techreturners.recordshop.service.RecordShopService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -45,10 +46,15 @@ public class RecordShopController {
     }
 
     @RequestMapping(value = "/albums", params = "title", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<Album>> getAlbumByYear(@RequestParam String title) {
+    public ResponseEntity<List<Album>> getAlbumByTitle(@RequestParam String title) {
         List<Album> albumList = recordShopService.getAlbumsByTitle(title);
         return new ResponseEntity<>(albumList, HttpStatus.OK);
     }
 
+    @RequestMapping(value = "/albums", params = "genre", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<List<Album>> getAlbumByGenre(@RequestParam Genre genre) {
+        List<Album> albumList = recordShopService.getAlbumsByGenre(genre);
+        return new ResponseEntity<>(albumList, HttpStatus.OK);
+    }
 
 }
