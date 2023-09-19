@@ -10,5 +10,6 @@ public enum Genre {
     JAZZ,
     ELECTRONIC,
     FOLK,
-    GRUNGE
+    GRUNGE,
+    INDIE
 }
