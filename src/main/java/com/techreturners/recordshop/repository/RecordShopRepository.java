@@ -6,17 +6,20 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RecordShopRepository extends JpaRepository<Album, Long> {
 
-    List<Album> findAllAlbumsByArtist(String artist);
+    List<Album> findAllAlbumsByArtistContainingIgnoreCase(Optional<String> artist);
 
-    List<Album> findAllAlbumsByYear(int year);
+    List<Album> findAllAlbumsByYear(Optional<Integer> year);
 
-    List<Album> findAllAlbumsByTitle(String title);
+    List<Album> findAllAlbumsByTitleContainingIgnoreCase(Optional<String> title);
 
-    List<Album> findAllAlbumsByGenre(Genre genre);
+    List<Album> findAllAlbumsByGenre(Optional<Genre> genre);
+
+    List<Album> findAllAlbumsByYearOrTitleOrGenreOrArtistContainingIgnoreCase(Optional<Integer> year, Optional<String> title, Optional<Genre> genre, Optional<String> artist);
 
     Album findAlbumById(Long albumId);
 

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RecordShopServiceImpl implements RecordShopService {
@@ -26,22 +27,22 @@ public class RecordShopServiceImpl implements RecordShopService {
     }
 
     @Override
-    public List<Album> getAlbumsByTitle(String title) {
-        return recordShopRepository.findAllAlbumsByTitle(title);
+    public List<Album> getAlbumsByTitle(Optional<String> title) {
+        return recordShopRepository.findAllAlbumsByTitleContainingIgnoreCase(title);
     }
 
     @Override
-    public List<Album> getAlbumsByYear(int year) {
+    public List<Album> getAlbumsByYear(Optional<Integer> year) {
         return recordShopRepository.findAllAlbumsByYear(year);
     }
 
     @Override
-    public List<Album> getAlbumsByArtist(String artist) {
-        return recordShopRepository.findAllAlbumsByArtist(artist);
+    public List<Album> getAlbumsByArtist(Optional<String> artist) {
+        return recordShopRepository.findAllAlbumsByArtistContainingIgnoreCase(artist);
     }
 
     @Override
-    public List<Album> getAlbumsByGenre(Genre genre) {
+    public List<Album> getAlbumsByGenre(Optional<Genre> genre) {
         return recordShopRepository.findAllAlbumsByGenre(genre);
     }
 
@@ -71,6 +72,11 @@ public class RecordShopServiceImpl implements RecordShopService {
     @Override
     public Album getAlbumById(Long albumId) {
         return recordShopRepository.findAlbumById(albumId);
+    }
+
+    @Override
+    public List<Album> getAlbumsByYearOrTitleOrGenreOrArtist(Optional<Integer> year, Optional<String> title, Optional<Genre> genre, Optional<String> artist) {
+        return recordShopRepository.findAllAlbumsByYearOrTitleOrGenreOrArtistContainingIgnoreCase(year, title, genre, artist);
     }
 
 }
