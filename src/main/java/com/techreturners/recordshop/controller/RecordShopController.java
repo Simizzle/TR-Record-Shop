@@ -10,9 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -37,7 +35,7 @@ public class RecordShopController {
     }
 
     @RequestMapping(value = "/albums", params = "artist", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
-    public ResponseEntity<List<Album>> getAlbumByArtist(@RequestParam("artist")Optional<String> artist) {
+    public ResponseEntity<List<Album>> getAlbumByArtist(@RequestParam("artist") Optional<String> artist) {
         List<Album> albumList = recordShopService.getAlbumsByArtist(artist);
         return new ResponseEntity<>(albumList, HttpStatus.OK);
     }
@@ -81,4 +79,5 @@ public class RecordShopController {
         return new ResponseEntity<>(albumList, HttpStatus.OK);
     }
 
+    // this is a new comment
 }
